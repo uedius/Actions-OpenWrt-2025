@@ -1,8 +1,7 @@
 name: immortalwrt
 
 on:
-  schedule:
-    - cron: 0 16 * * *
+  repository_dispatch:
   workflow_dispatch:
 
 env:
