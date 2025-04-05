@@ -1,4 +1,4 @@
-name: immortalwrt_x86
+name: immortalwrt
 
 on:
   schedule:
@@ -8,14 +8,14 @@ on:
 env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt
   REPO_BRANCH: master
-  CONFIG_FILE: immortalwrt/x86/.config
+  CONFIG_FILE: immortalwrt/8820S/.config
   DIY_P1_SH: immortalwrt/diy-part1.sh
   DIY_P2_SH: immortalwrt/diy-part2.sh
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
   TZ: Asia/Shanghai
   OPENWRT_NAME: immortalwrt
-  OPENWRT_NAME1: x86
+  OPENWRT_NAME1: 8820S
 
 jobs:
   build:
@@ -142,11 +142,6 @@ jobs:
         tag_name: ${{ steps.tag.outputs.release_tag }}
         body_path: release.txt
 
-    - name: config文件上传自动更新1
-      run : |
-        git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-        git config --global user.name "github-actions[bot]"
-        sudo timedatectl set-timezone "Asia/Shanghai"
     - name: config文件上传自动更新2
       run: |
         cd $GITHUB_WORKSPACE
